@@ -2,19 +2,11 @@ import Vue from 'vue'
 import axios from 'axios'
 import VueAxios from 'vue-axios'
 
-let students = [    {name: 'Домашенко Богдан', group: 'rpz 18 1/9', bdate: '17.08.2003', compleated: true}, 
-    {name: 'Безсмертних Владислав', group: 'rpz 18 1/9', bdate: '23.07.2003', compleated: true},
-    {name: 'Толстов Олег', group: 'rpz 18 1/9', bdate: '23.02.2002', compleated: false},
-    {name: 'Скорін Сергій', group: 'rpz 18 1/9', bdate: '21.04.2003', compleated: true},
-    {name: 'Гоцький Олксандр', group: 'rpz 18 1/9', bdate: '13.05.2003', compleated: false},
-    {name: 'Нільга софія', group: 'rpz 18 1/9', bdate: '01.03.2003', compleated: false}
-];
-
 new Vue({
     el: '#app',
     data: {
         inputName: '',
-        students: students,
+        students: [],
         studentName: '',
         studentGroup: '',
         studentBdate: '',

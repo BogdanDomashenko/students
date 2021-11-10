@@ -9,69 +9,22 @@
 </head>
 <body>
     <style>
-        .studentsTable {
-            margin-top: 20px;
-        }
-        td {
-            padding: 10px;
-            border: 1px ridge #000;
-            background-color: antiquewhite;
-        }
-        .addStudent input {
-            margin-bottom: 10px;
-            margin-left: 5px;
-        }
+            .studentsTable {
+           margin-top: 20px;
+    }
+    td {
+        padding: 10px;
+        border: 1px ridge #000;
+        background-color: antiquewhite;
+    }
+    .addStudent input {
+        margin-bottom: 10px;
+        margin-left: 5px;
+    }
     </style>
-    <div id="app">
-        <h3>Поиск</h3>
-        <br>
-        Имя
-        <input type="text" v-model="inputName">
-        <div class="students">
-            <p></p>
-            <p>Колличество студентов: {{students.length}}</p>
-            <table class="studentsTable">
-                <tr>
-                    <td>Имя</td>
-                    <td>Группа</td>
-                    <td>Оценка</td>
-                    <td>Выполнено</td>
-                    <td>Удалить</td>
-                </tr>
-                <tr v-for="(student, index) in filteredStudents" :key="index">
-                    <td>{{student.name}}</td>
-                    <td>{{student.group}}</td>
-                    <td>{{student.mark}}</td>
-                    <td>
-                        <input type="checkbox" v-model="student.isDonePr" name="" id="">
-                    </td>
-                    <td>
-                        <a href="" v-on:click.prevent="deleteStudent(index)">Удалить</a>
-                    </td>
-                </tr>
-            </table>
-        </div>
-
-        <form action="" class="addStudent" v-on:submit.prevent="addStudent">
-            <br>
-            <h3>Добавление студентов</h3>
-            <br>
-            Имя<input type="text" v-model="studentName">
-            <br>
-            Группа<input type="text" v-model="studentGroup">
-            <br>
-            Оценка<input type="number" v-model="studentMark">
-            <br>
-            Выполнено<input type="checkbox" v-model="studentCompleate">
-            <br><br>
-            <input type="submit" value="Добавить">
-
-            <div class="addStudentError" v-if="addStudentError">
-                {{addStudentError}}
-            </div>
-        </form>
-    </div>
+<div id="app">
+</div>
 </body>
 
-<script src="./main.js"></script>
+<script src="main.js"></script>
 </html>
