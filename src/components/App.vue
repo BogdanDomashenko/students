@@ -208,4 +208,16 @@ export default {
     .editImg {
         width: 30px;
     }
+    .studentsTable {
+           margin-top: 20px;
+    }
+    td {
+        padding: 10px;
+        border: 1px ridge #000;
+        background-color: antiquewhite;
+    }
+    .addStudent input {
+        margin-bottom: 10px;
+        margin-left: 5px;
+    }
 </style>
