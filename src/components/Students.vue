@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div :class="theme">
         <h3>Поиск</h3>
         <br>
         Имя
@@ -95,6 +95,15 @@
                 </div>
             </div>
         </Modal>
+        Студентів: {{ studentstCount }}
+        <div class="theme-select">
+            <br>
+            Оберіть тему
+            <br>
+            Світла<input type="radio" name="theme" v-model="theme" value="light">
+            Кольорова<input type="radio" name="theme" v-model="theme" value="color">
+            {{theme}}
+        </div>
     </div>
 </template>
 
@@ -109,6 +118,7 @@ export default {
     },
     data: function() {
         return {
+            selectedTheme: '',
             inputName: '',
             students: [],
             studentName: '',
@@ -216,12 +226,37 @@ export default {
             function pad(s) { return (s < 10) ? '0' + s : s; }
             var d = new Date(this.studentBdate);
             return [pad(d.getDate()), pad(d.getMonth()+1), d.getFullYear()].join('.');
-          }
-    }
+          },
+        studentstCount () {
+            return this.$store.getters.getCount;
+        },
+        theme: {
+            get() {
+                return this.$store.getters.getTheme;
+            },
+            set(value) {
+                this.$store.commit('SET_THEME', value)
+            }
+        }
+    },
+    // watch: {
+    //     theme() {
+            
+    //     }
+    // }
 }
 </script>
 
 <style scoped>
+    .light {
+        background: #fff;
+    }
+    .color {
+        background-color: rgb(212, 255, 211)
+    }
+    .color td {
+        background-color: rgb(69, 255, 66)
+    }
     .editImg {
         width: 30px;
     }
