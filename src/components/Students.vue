@@ -47,7 +47,7 @@
                         <input type="checkbox" v-model="student.isDonePr" name="" id="">
                     </td>
                     <td>
-                        <a href="" v-on:click.prevent="deleteStudent(student._id)">Удалить</a>
+                        <a href="" :class="{'disabledLink': loginedStudent.group != student.group}" v-on:click.prevent="deleteStudent(student._id)">Удалить</a>
                     </td>
                                         <td>
                         <a href="" v-on:click.prevent="updateStudent(student._id)">Оновити</a>
@@ -141,7 +141,6 @@ export default {
     },
     methods: {
         deleteStudent: function(id) {
-            this.students.splice(id, 1); 
             Vue.axios.delete(`http://46.101.212.195:3000/students/${id}`).then((response) => {
                 this.students = this.students.filter(student=>student._id != id);
             });
@@ -213,6 +212,9 @@ export default {
         }
     },
     computed: {
+        loginedStudent: function () {
+            return this.$store.getters.getUser;
+        },
         filteredStudents: function() {
             if (this.inputName) {
                 return this.students.filter(item => {
@@ -277,5 +279,12 @@ export default {
     }
     .student-modal-body {
         display: flex;
+    }
+    .disabledLink {
+        pointer-events: none;
+        cursor: default;
+        opacity: 0.6;
+        color: #000;
+        text-decoration: none;
     }
 </style>

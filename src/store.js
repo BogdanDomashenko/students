@@ -1,6 +1,5 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
-import Axios from 'axios';
 
 import createPersistedState from "vuex-persistedstate";
 
@@ -9,16 +8,19 @@ Vue.use(Vuex);
 export const store = new Vuex.Store({
     plugins: [createPersistedState(
         {
-            path: ['theme']
+            path: ['theme', 'user']
         }
     )],
     state: {
         count: 0,
-        theme: 'light'
+        theme: 'light',
+        user: null
     },
     mutations: {
         setCount: (state, count) => state.count = count,
         SET_THEME: (state, theme) => state.theme = theme,
+        setUser: (state, user) => state.user = user,
+        removeUser: (state) => state.user = null,
     },
     getters: {
         getCount: (state) =>
@@ -27,7 +29,11 @@ export const store = new Vuex.Store({
         },
         getTheme: (state) => {
             return state.theme
-        }
+        },
+        getUser: (state) =>
+        {
+            return state.user
+        },
     },
 });
 
